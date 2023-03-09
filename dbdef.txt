@@ -1,0 +1,315 @@
+CREATE TABLE Movie (
+	Movie_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Title VARCHAR(255) NOT NULL,
+	Director VARCHAR(255) NOT NULL,
+	Genre VARCHAR(255) NOT NULL CHECK(Genre IN ('Action', 'Adventure',
+		'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+		'Fantasy', 'Film Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+		'Romance','Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western')),
+	Description VARCHAR(5000),
+	Country_of_origin VARCHAR(255) CHECK(Country_of_origin IN ('Afghanistan',
+		'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina',
+		'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
+		'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan',
+		'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria',
+		'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada',
+		'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros',
+		'Congo, Democratic Republic of the', 'Congo, Republic of the', 'Costa Rica',
+		'Cote d Ivoire', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark',
+		'Djibouti', 'Dominica', 'Dominican Republic', 'East Timor (Timor-Leste)',
+		'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia',
+		'Eswatini (Swaziland)', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia',
+		'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea',
+		'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hungary', 'Iceland', 'India',
+		'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan',
+		'Kazakhstan', 'Kenya', 'Kiribati', 'Kosovo', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia',
+		'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania',
+		'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta',
+		'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova',
+		'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 
+		'Myanmar (Burma)', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand',
+		'Nicaragua', 'Niger', 'Nigeria', 'North Korea',
+		'North Macedonia (formerly Macedonia)', 'Norway', 'Oman', 'Pakistan', 'Palau',
+		'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines',
+		'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda',
+		'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines',
+		'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal',
+ 		'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia',
+		'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan',
+		'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria',
+		'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Tonga',
+		'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda',
+		'Ukraine', 'United Arab Emirates', 'United Kingdom',
+		'United States of America', 'Uruguay', 'Uzbekistan', 'Vanuatu',
+		'Vatican City (Holy See)', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia',
+		'Zimbabwe')),
+	Viewing_age INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Movie_edition(
+	Movie_edition_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Movie_id INTEGER NOT NULL,
+	Language VARCHAR(255) NOT NULL CHECK(Language IN('Abkhaz', 'Afar',
+		'Afrikaans', 'Akan', 'Albanian', 'Amharic', 'Arabic', 'Aragonese', 'Armenian',
+		'Assamese', 'Avaric', 'Avestan', 'Aymara', 'Azerbaijani', 'Bambara', 'Bashkir',
+		'Basque', 'Belarusian', 'Bengali', 'Bihari', 'Bislama', 'Bosnian', 'Breton', 
+		'Bulgarian', 'Burmese', 'Catalan', 'Chamorro', 'Chechen', 'Chichewa', 'Chinese', 
+		'Chuvash', 'Cornish', 'Corsican', 'Cree', 'Croatian', 'Czech', 'Danish', 'Divehi', 
+		'Dutch', 'Dzongkha', 'English', 'Esperanto', 'Estonian', 'Ewe', 'Faroese', 'Fijian', 
+		'Finnish', 'French', 'Fula', 'Galician', 'Ganda', 'Georgian', 'German', 'Greek', 
+		'Guaraní', 'Gujarati', 'Haitian Creole', 'Hausa', 'Hebrew', 'Herero', 'Hindi', 
+		'Hiri Motu', 'Hungarian', 'Icelandic', 'Ido', 'Igbo', 'Indonesian', 'Interlingua', 
+		'Interlingue', 'Inuktitut', 'Inupiaq', 'Irish', 'Italian', 'Japanese', 'Javanese', 
+		'Kabyle', 'Kalaallisut', 'Kannada', 'Kanuri', 'Kashmiri', 'Kazakh', 'Khmer', 'Kikuyu', 
+		'Kinyarwanda', 'Kirundi', 'Komi', 'Kongo', 'Korean', 'Kurdish', 'Kwanyama', 'Kyrgyz', 
+		'Lao', 'Latin', 'Latvian', 'Limburgish', 'Lingala', 'Lithuanian', 'Luba-Katanga', 
+		'Luxembourgish', 'Macedonian', 'Malagasy', 'Malay', 'Malayalam', 'Maltese', 'Manx', 
+		'Maori', 'Marathi', 'Marshallese', 'Mongolian', 'Nauruan', 'Navajo', 'Ndonga', 'Nepali', 
+		'North Ndebele', 'Northern Sami', 'Norwegian', 'Norwegian Bokmål', 'Norwegian Nynorsk', 
+		'Occitan', 'Ojibwe', 'Old Church Slavonic', 'Oriya', 'Oromo', 'Ossetian', 'Pāli', 'Pashto', 
+		'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua', 'Romansh', 'Romanian', 'Russian', 
+		'Samoan', 'Sango', 'Sanskrit', 'Sardinian', 'Scottish Gaelic', 'Serbian', 'Sesotho', 'Shona', 
+		'Sindhi', 'Sinhalese', 'Slovak', 'Slovene', 'Somali', 'Southern Ndebele', 'Southern Sotho', 
+		'Spanish', 'Sundanese', 'Swahili', 'Swati', 'Swedish', 'Tagalog', 'Tahitian','Tajik', 'Tamil', 
+		'Tatar', 'Telugu', 'Tetum', 'Thai', 'Tibetan', 'Tigrinya', 'Tongan', 'Tsonga', 'Tswana', 
+		'Turkish', 'Turkmen', 'Twi', 'Uighur', 'Ukrainian', 'Urdu', 'Uzbek', 'Venda', 'Vietnamese', 
+		'Volapük', 'Walloon', 'Welsh', 'Western Frisian', 'Wolof', 'Xhosa', 'Yi', 'Yiddish', 'Yoruba', 
+		'Zulu')),
+	Subtitle_Language VARCHAR(255) NOT NULL CHECK(Language IN('Abkhaz', 'Afar',
+		'Afrikaans', 'Akan', 'Albanian', 'Amharic', 'Arabic', 'Aragonese', 'Armenian',
+		'Assamese', 'Avaric', 'Avestan', 'Aymara', 'Azerbaijani', 'Bambara', 'Bashkir',
+		'Basque', 'Belarusian', 'Bengali', 'Bihari', 'Bislama', 'Bosnian', 'Breton', 
+		'Bulgarian', 'Burmese', 'Catalan', 'Chamorro', 'Chechen', 'Chichewa', 'Chinese', 
+		'Chuvash', 'Cornish', 'Corsican', 'Cree', 'Croatian', 'Czech', 'Danish', 'Divehi', 
+		'Dutch', 'Dzongkha', 'English', 'Esperanto', 'Estonian', 'Ewe', 'Faroese', 'Fijian', 
+		'Finnish', 'French', 'Fula', 'Galician', 'Ganda', 'Georgian', 'German', 'Greek', 
+		'Guaraní', 'Gujarati', 'Haitian Creole', 'Hausa', 'Hebrew', 'Herero', 'Hindi', 
+		'Hiri Motu', 'Hungarian', 'Icelandic', 'Ido', 'Igbo', 'Indonesian', 'Interlingua', 
+		'Interlingue', 'Inuktitut', 'Inupiaq', 'Irish', 'Italian', 'Japanese', 'Javanese', 
+		'Kabyle', 'Kalaallisut', 'Kannada', 'Kanuri', 'Kashmiri', 'Kazakh', 'Khmer', 'Kikuyu', 
+		'Kinyarwanda', 'Kirundi', 'Komi', 'Kongo', 'Korean', 'Kurdish', 'Kwanyama', 'Kyrgyz', 
+		'Lao', 'Latin', 'Latvian', 'Limburgish', 'Lingala', 'Lithuanian', 'Luba-Katanga', 
+		'Luxembourgish', 'Macedonian', 'Malagasy', 'Malay', 'Malayalam', 'Maltese', 'Manx', 
+		'Maori', 'Marathi', 'Marshallese', 'Mongolian', 'Nauruan', 'Navajo', 'Ndonga', 'Nepali', 
+		'North Ndebele', 'Northern Sami', 'Norwegian', 'Norwegian Bokmål', 'Norwegian Nynorsk', 
+		'Occitan', 'Ojibwe', 'Old Church Slavonic', 'Oriya', 'Oromo', 'Ossetian', 'Pāli', 'Pashto', 
+		'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua', 'Romansh', 'Romanian', 'Russian', 
+		'Samoan', 'Sango', 'Sanskrit', 'Sardinian', 'Scottish Gaelic', 'Serbian', 'Sesotho', 'Shona', 
+		'Sindhi', 'Sinhalese', 'Slovak', 'Slovene', 'Somali', 'Southern Ndebele', 'Southern Sotho', 
+		'Spanish', 'Sundanese', 'Swahili', 'Swati', 'Swedish', 'Tagalog', 'Tahitian','Tajik', 'Tamil', 
+		'Tatar', 'Telugu', 'Tetum', 'Thai', 'Tibetan', 'Tigrinya', 'Tongan', 'Tsonga', 'Tswana', 
+		'Turkish', 'Turkmen', 'Twi', 'Uighur', 'Ukrainian', 'Urdu', 'Uzbek', 'Venda', 'Vietnamese', 
+		'Volapük', 'Walloon', 'Welsh', 'Western Frisian', 'Wolof', 'Xhosa', 'Yi', 'Yiddish', 'Yoruba', 
+		'Zulu')),
+	Type VARCHAR(255) NOT NULL CHECK(Type IN('3D','2D','IMAX','4D','4DX')),
+	Duration TIME NOT NULL,
+	Start_date DATE NOT NULL,
+	End _date DATE NOT NULL,
+	CONSTRAINT CheckIfMovieExists
+		FOREIGN KEY (Movie_id) REFERENCES Movie(Movie_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Hall (
+	Hall_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Hall_number INTEGER NOT NULL,
+	Type VARCHAR(255) NOT NULL CHECK(Type IN('3D','2D','IMAX','4D','4DX')),
+	Branch_id INTEGER NOT NULL,
+	CONSTRAINT CheckIfBranchExists
+		FOREIGN KEY (Branch_id) REFERENCES Branch(Branch_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Seat (
+	Seat_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Hall_id INTEGER NOT NULL,
+	Seat_number INTEGER NOT NULL,
+	Seat_row INTEGER NOT NULL,
+	Disabled_seat BIT NOT NULL,
+	CONSTRAINT CheckIfHallExists
+		FOREIGN KEY (Hall_id) REFERENCES Hall(Hall_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Person (
+	First_name VARCHAR(255) NOT NULL,
+	Last_name VARCHAR(255) NOT NULL,
+	Email_address VARCHAR(255) PRIMARY KEY UNIQUE NOT NULL CHECK(Email_address LIKE('%@%.%')),
+	Phone_number VARCHAR(13) UNIQUE CHECK(Phone_number LIKE('+[0-9]{11}')),
+	Address VARCHAR(255)
+);
+
+CREATE TABLE Customer (
+	Customer_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Email_address VARCHAR(255) UNIQUE NOT NULL,
+	Payment_details BIT NOT NULL,
+	CONSTRAINT CheckIfCustomerInPersonTable
+		FOREIGN KEY (Email_address) REFERENCES Person(Email_address) ON DELETE CASCADE
+);
+
+CREATE TABLE Employee(
+	Employee_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Email_address VARCHAR(255) UNIQUE NOT NULL,
+	Payment_details BIT NOT NULL,
+	CONSTRAINT CheckIfEmployeeInPersonTable
+		FOREIGN KEY (Email_address) REFERENCES Person(Email_address) ON DELETE CASCADE
+);
+
+CREATE TABLE Contract (
+	Contract_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Employee_id INTEGER NOT NULL,
+	Start_date DATE NOT NULL,
+	End_date DATE,
+	Salary VARCHAR(255) NOT NULL,
+	Branch_id INTEGER NOT NULL,
+	Job_function VARCHAR(255) NOT NULL,
+	CONSTRAINT CheckIfEmployeeExists
+		FOREIGN KEY (Employee_id) REFERENCES Employee(Employee_id) ON DELETE CASCADE,
+	CONSTRAINT CheckIfBranchOfEmployeeExists
+		FOREIGN KEY (Branch_id) REFERENCES Branch(Branch_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Showing(
+	Showing_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Movie_edition_id INTEGER NOT NULL,
+	Datetime DATETIME NOT NULL,
+	Hall_id INTEGER NOT NULL,
+	CONSTRAINT CheckIfMovieIdExists
+		FOREIGN KEY (Movie_edition_id) REFERENCES Movie_edition(Movie_edition_id) ON DELETE CASCADE,
+	CONSTRAINT CheckIfShowingHallExists
+		FOREIGN KEY (Hall_id) REFERENCES Hall(Hall_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Reservation(
+	Reservation_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Customer_id INTEGER NOT NULL,
+	Showing_id INTEGER NOT NULL,
+	Seat_id INTEGER NOT NULL,
+	Paying_status BIT NOT NULL,
+	UNIQUE(Showing_id, Seat_id),
+	CONSTRAINT CheckIfCustomerExists
+		FOREIGN KEY (Customer_id) REFERENCES Customer(Customer_id) ON DELETE CASCADE,
+	CONSTRAINT CheckIfShowingExists,
+		FOREIGN KEY (Showing_id) REFERENCES Showing(Showing_id) ON DELETE CASCADE,
+	CONSTRAINT CheckIfSeatExists
+		FOREIGN KEY (Seat_id) REFERENCES Seat(Seat_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Product(
+	Product_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Product_name VARCHAR(255) NOT NULL,
+	Price DOUBLE NOT NULL,
+	Allergen_information VARCHAR(255)
+);
+
+CREATE TABLE Product_stock(
+ 	Product_id INTEGER NOT NULL,
+	Branch_id INTEGER NOT NULL,
+	Amount INTEGER NOT NULL,
+	UNIQUE(Product_id, Branch_id),
+	CONSTRAINT CheckIfProductExists
+		FOREIGN KEY (Product_id) REFERENCES Product(Product_id) ON DELETE CASCADE,
+	CONSTRAINT CheckIfProductBranchExists
+		FOREIGN KEY (Branch_id) REFERENCES Branch(Branch_id) ON DELETE CASCADE,
+	PRIMARY KEY(Product_id, Branch_id)
+);
+
+CREATE TABLE Branch (
+	Branch_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+	Name VARCHAR(255) NOT NULL,
+	Address VARCHAR(255) NOT NULL
+);
+
+CREATE TRIGGER CheckShowingOverlapByInsert
+BEFORE INSERT ON Showing
+FOR EACH ROW
+WHEN EXISTS
+(
+	SELECT 1 FROM Showing s WHERE s.Hall_id = NEW.Hall_id AND s.Showing_id <> NEW.Showing_id AND
+	(
+		(
+			DATETIME(NEW.Datetime, '+' || (SELECT Duration FROM Movie_edition m WHERE NEW.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+			BETWEEN
+			s.Datetime 
+			AND 
+			DATETIME(s.Datetime, '+' || (SELECT Duration FROM Movie_edition m WHERE s.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+		) 
+		OR 
+		(
+			NEW.Datetime 
+			BETWEEN
+			s.Datetime 
+			AND 
+			DATETIME(s.Datetime, '+' || (SELECT Duration FROM Movie_edition m WHERE s.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+		) 
+		OR
+		(
+			s.Datetime 
+			BETWEEN 
+			NEW.Datetime 
+			AND (SELECT Duration FROM Movie_edition m WHERE NEW.Movie_edition_id = m.Movie_edition_id)
+		)
+	)
+)
+BEGIN
+SELECT RAISE(FAIL, 'There is already a showing in this hall at this time.');
+END;
+
+CREATE TRIGGER CheckShowingOverlapByUpdate
+BEFORE UPDATE ON Showing
+FOR EACH ROW
+WHEN EXISTS
+(
+	SELECT 1 FROM Showing s WHERE s.Hall_id = NEW.Hall_id AND s.Showing_id <> NEW.Showing_id AND
+	(
+		(
+			DATETIME(NEW.Datetime, '+' ||  (SELECT Duration FROM Movie_edition m WHERE NEW.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+			BETWEEN
+			s.Datetime 
+			AND 
+			DATETIME(s.Datetime, '+' || (SELECT Duration FROM Movie_edition m WHERE s.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+		) 
+		OR 
+		(
+			NEW.Datetime 
+			BETWEEN
+			s.Datetime 
+			AND 
+			DATETIME(s.Datetime, '+' || (SELECT Duration FROM Movie_edition m WHERE s.Movie_edition_id = m.Movie_edition_id) || ' MINUTES')
+		) 
+		OR
+		(
+			s.Datetime 
+			BETWEEN 
+			NEW.Datetime 
+			AND 
+			(SELECT Duration FROM Movie_edition m WHERE NEW.Movie_edition_id = m.Movie_edition_id)
+		)
+	)
+)
+BEGIN
+SELECT RAISE(FAIL, 'There is already a showing in this hall at this time.');
+END;
+
+CREATE TRIGGER CheckIfRightHallByInsert
+BEFORE INSERT ON Showing
+FOR EACH ROW
+BEGIN
+SELECT
+	CASE
+		WHEN 
+			(SELECT Type FROM Hall WHERE Hall.Hall_id = NEW.Hall_id) <> (SELECT Type FROM Movie_edition WHERE Movie_edition.Movie_edition_id = NEW.Movie_edition_id) 
+		THEN
+	 		RAISE (ABORT,'Hall type is not the same as film type.')
+	END;
+END;
+
+CREATE TRIGGER CheckIfRightHallByUpdate
+BEFORE UPDATE ON Showing
+FOR EACH ROW
+BEGIN
+SELECT
+	CASE
+		WHEN 
+			(SELECT Type FROM Hall WHERE Hall.Hall_id = NEW.Hall_id) <> (SELECT Type FROM Movie_edition WHERE Movie_edition.Movie_edition_id = NEW.Movie_edition_id) 
+		THEN
+	 		RAISE (ABORT,'Hall type is not the same as film type.')
+	END;
+END;
