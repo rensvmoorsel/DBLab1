@@ -1,11 +1,6 @@
 CREATE TABLE Movie (
 	Movie_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
 	Title VARCHAR(255) NOT NULL,
-	Director VARCHAR(255) NOT NULL,
-	Genre VARCHAR(255) NOT NULL CHECK(Genre IN ('Action', 'Adventure',
-		'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
-		'Fantasy', 'Film Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-		'Romance','Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western')),
 	Description VARCHAR(5000),
 	Country_of_origin VARCHAR(255) CHECK(Country_of_origin IN ('Afghanistan',
 		'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina',
@@ -44,6 +39,27 @@ CREATE TABLE Movie (
 		'Vatican City (Holy See)', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia',
 		'Zimbabwe')),
 	Viewing_age INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Directors(
+	Movie_id INTEGER NOT NULL,
+	Director VARCHAR(255) NOT NULL,
+	UNIQUE(Movie_id, Director),
+	PRIMARY KEY(Movie_id, Director),
+	CONSTRAINT CheckIfMovieExists
+		FOREIGN KEY (Movie_id) REFERENCES Movie(Movie_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Genres(
+	Movie_id INTEGER NOT NULL,
+	Genre VARCHAR(255) NOT NULL CHECK(Genre IN ('Action', 'Adventure',
+		'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+		'Fantasy', 'Film Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+		'Romance','Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western')),
+	UNIQUE(Movie_id, Genre),
+	PRIMARY KEY(Movie_id, Genre),
+	CONSTRAINT CheckIfMovieExists
+		FOREIGN KEY (Movie_id) REFERENCES Movie(Movie_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Movie_edition(
@@ -131,9 +147,7 @@ CREATE TABLE Seat (
 CREATE TABLE Person (
 	First_name VARCHAR(255) NOT NULL,
 	Last_name VARCHAR(255) NOT NULL,
-	Email_address VARCHAR(255) PRIMARY KEY UNIQUE NOT NULL CHECK(Email_address LIKE('%@%.%')),
-	Phone_number VARCHAR(13) UNIQUE CHECK(Phone_number LIKE('+[0-9]{11}')),
-	Address VARCHAR(255)
+	Email_address VARCHAR(255) PRIMARY KEY UNIQUE NOT NULL CHECK(Email_address LIKE('%@%.%'))
 );
 
 CREATE TABLE Customer (
